@@ -3,4 +3,4 @@ Componentes
 Examen Parcial 2
 Daniel Zúñiga Rojas
 
-Repositorio link: https://github.com/DanielGit28/Laboratorio6
+Repositorio link: https://github.com/DanielGit28/ExamenParcial2
