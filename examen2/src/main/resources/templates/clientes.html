@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Listado de clientes</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+<body>
+<div>
+    <h1>Vista de clientes</h1>
+    <br>
+    <a href="/">Volver al inicio</a>
+    <br>
+
+    <hr/>
+    <a th:href="@{/registroClientes}" class="btn btn-primary">Añadir cliente</a>
+    <br/><br/>
+    <table class="table table-bordered table-striped">
+
+        <thead class="thead-dark">
+        <tr>
+            <th>Razón social</th>
+            <th>Cédula jurídica</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Contactos</th>
+            <th>Añadir contacto</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="each,status: ${cliente}">
+            <td th:text="${each.razonSocial}" />
+            <td th:text="${each.cedulaJuridica}" />
+            <td th:text="${each.direccion}" />
+            <td th:text="${each.telefono}" />
+            <td>
+                <a th:href="@{/contactos/{id}(id=${each.id})}" class="btn btn-info">Ver contactos</a>
+            </td>
+            <td>
+                <a th:href="@{/registroContactos/{id}(id=${each.id})}" class="btn btn-info">Añadir contacto</a>
+            </td>
+            <td>
+                <a th:href="@{/actualizarCliente/{id}(id=${each.id})}" class="btn btn-info">Editar</a>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+</body>
+</html>

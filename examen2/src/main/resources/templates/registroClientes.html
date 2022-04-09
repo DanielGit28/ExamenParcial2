@@ -1,0 +1,40 @@
+<!Doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar cliente</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Registrar cliente</h3>
+    <hr/>
+
+
+    <form th:action="@{/guardarCliente}" th:object="${cliente}" method="POST">
+
+        <input type="text" th:field="*{razonSocial}" class="form-control col-4 mb-4" placeholder="Razón social" />
+
+        <input type="text" th:field="*{cedulaJuridica}" class="form-control col-4 mb-4" placeholder="Cédula jurídica" />
+
+        <input type="text" th:field="*{direccion}" class="form-control col-4 mb-4" placeholder="Dirección" />
+
+        <input type="text" th:field="*{telefono}" class="form-control col-4 mb-4" placeholder="Teléfono" />
+
+
+        <button type="submit" class="btn btn-primary col-2">Send</button>
+
+        <input type="hidden" th:field="*{id}" />
+    </form>
+    <hr/>
+    <a href="/">Volver al inicio</a>
+</div>
+
+</body>
+
+</html>

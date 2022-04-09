@@ -1,0 +1,51 @@
+<!Doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar trabajos</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Registrar trabajo</h3>
+    <hr/>
+
+
+    <form th:action="@{/guardarTrabajo}" th:object="${trabajo}" method="POST">
+
+        <label for="auditorias">Escoja la auditoría</label>
+        <select th:field="*{auditoria}" class="form-select" name="auditorias" id="auditorias">
+            <option value="ISO_CALIDAD">ISO-CALIDAD</option>
+            <option value="ISO_PROCESOS">ISO-PROCESOS</option>
+            <option value="ISO_SALUBRIDAD">ISO-SALUBRIDAD</option>
+            <option value="SEGURIDAD_LABORAL">SEGURIDAD LABORAL</option>
+            <option value="SEGURIDAD_IT">SEGURIDAD IT</option>
+        </select>
+
+
+        <input type="date" th:field="*{fecha}" class="form-control col-4 mb-4" placeholder="Fecha" />
+
+
+        <label for="auditorias">Escoja el cliente</label>
+        <select th:field="*{idCliente}" class="form-select" name="cliente" id="cliente">
+            <option value="0">Seleccionar cliente</option>
+            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.razonSocial}"></option>
+        </select>
+        <br>
+
+        <button type="submit" class="btn btn-primary col-2">Send</button>
+
+        <input type="hidden" th:field="*{id}" />
+    </form>
+    <hr/>
+    <a href="/">Volver al inicio</a>
+</div>
+
+</body>
+
+</html>

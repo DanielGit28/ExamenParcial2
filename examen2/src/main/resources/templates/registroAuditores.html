@@ -1,0 +1,58 @@
+<!Doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar auditor</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Registrar auditor</h3>
+    <hr/>
+
+
+    <form th:action="@{/guardarAuditor}" th:object="${auditor}" method="POST">
+
+        <input type="text" th:field="*{nombre}" class="form-control col-4 mb-4" placeholder="Nombre" />
+
+        <input type="text" th:field="*{apellido1}" class="form-control col-4 mb-4" placeholder="Apellido 1" />
+
+        <input type="text" th:field="*{apellido2}" class="form-control col-4 mb-4" placeholder="Apellido 2" />
+
+        <input type="text" th:field="*{direccion}" class="form-control col-4 mb-4" placeholder="Dirección" />
+
+        <input type="text" th:field="*{telefono}" class="form-control col-4 mb-4" placeholder="Teléfono" />
+
+        <input type="date" th:field="*{fechaNacimiento}" class="form-control col-4 mb-4" placeholder="Fecha de nacimiento (MM-dd-yyyy)" />
+
+        <input type="text" th:field="*{correo}" class="form-control col-4 mb-4" placeholder="Correo" />
+
+        <input type="text" th:field="*{disponibilidadViaje}" class="form-control col-4 mb-4" placeholder="Disponibilidad para viajar (Si o No)" />
+
+        <label for="auditorias">Escoja el tipo de auditoria</label>
+        <select th:field="*{especialidad}" class="form-select" name="auditorias" id="auditorias">
+            <option value="ISO_CALIDAD">ISO-CALIDAD</option>
+            <option value="ISO_PROCESOS">ISO-PROCESOS</option>
+            <option value="ISO_SALUBRIDAD">ISO-SALUBRIDAD</option>
+            <option value="SEGURIDAD_LABORAL">SEGURIDAD LABORAL</option>
+            <option value="SEGURIDAD_IT">SEGURIDAD IT</option>
+        </select>
+        <br>
+        <input type="hidden" th:field="*{estado}" value="Activo"/>
+
+        <button type="submit" class="btn btn-primary col-2">Send</button>
+
+        <input type="hidden" th:field="*{id}" />
+    </form>
+    <hr/>
+    <a href="/">Volver al inicio</a>
+</div>
+
+</body>
+
+</html>
